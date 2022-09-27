@@ -1,35 +1,75 @@
 {
-    "name": "nazarii-kretovych/laravel-api-model-driver",
-    "description": "API driver for Laravel 7 Eloquent models",
+    "name": "inquid/laravel-api-model-driver",
+    "description": "API driver for Laravel Eloquent models",
     "keywords": [
+        "inquid",
         "laravel",
         "database driver",
         "api",
-        "eloquent"
+        "eloquent",
+        "laravel-api-model-driver"
     ],
     "type": "library",
     "require": {
-        "php": "^7.2",
+        "php": "^7.0|^8.0",
         "ext-curl": "*",
-        "illuminate/database": "^7.0"
+        "guzzlehttp/guzzle": "^7.5",
+        "illuminate/contracts": "^9.0",
+        "illuminate/database": "^7.0|^8.0|^9.0",
+        "spatie/laravel-package-tools": "^1.13.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "spatie/laravel-ray": "^1.26"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": "Nazarii Kretovych",
-            "email": "nazarii.kretovych@gmail.com"
+            "name": "Inquid SAS de CV",
+            "email": "contact@inquid.co"
         }
     ],
     "autoload": {
         "psr-4": {
-            "NazariiKretovych\\LaravelApiModelDriver\\": "src"
+            "Inquid\\LaravelApiModelDriver\\": "src",
+            "Inquid\\LaravelApiModelDriver\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Inquid\\LaravelApiModelDriver\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "NazariiKretovych\\LaravelApiModelDriver\\ServiceProvider"
-            ]
+                "Inquid\\LaravelApiModelDriver\\ServiceProvider"
+            ],
+            "aliases": {
+                "Skeleton": "Inquid\\LaravelApiModelDriver\\Facades\\LaravelApiModelDriver"
+            }
         }
     },
     "minimum-stability": "dev",
