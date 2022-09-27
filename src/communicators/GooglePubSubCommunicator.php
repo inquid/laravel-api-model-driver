@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Inquid\LaravelApiModelDriver\communicators;
 
-/**
- *
- */
 class GooglePubSubCommunicator implements Communicator
 {
     /**

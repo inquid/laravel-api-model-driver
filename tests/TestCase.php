@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inquid\LaravelApiModelDriver\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Inquid\LaravelApiModelDriver\ServiceProvider as LaravelApiModelDriverServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -15,7 +15,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Inquid\\LaravelApiModelDriver\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Inquid\\LaravelApiModelDriver\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

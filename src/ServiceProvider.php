@@ -6,7 +6,6 @@ namespace Inquid\LaravelApiModelDriver;
 
 use Illuminate\Database\Connection as ConnectionBase;
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
-use Inquid\LaravelApiModelDriver\communicators\GuzzleCommunicator;
 
 /**
  * Service provider to create the class connection.
@@ -30,7 +29,7 @@ class ServiceProvider extends ServiceProviderBase
     }
 
     /**
-     * @param array $config
+     * @param  array  $config
      * @return Connection
      */
     protected function createSpannerConnection(array $config)

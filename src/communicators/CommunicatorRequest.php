@@ -9,41 +9,41 @@ namespace Inquid\LaravelApiModelDriver\communicators;
  */
 class CommunicatorRequest
 {
-    /** @var string $url */
+    /** @var string */
     public string $url;
 
-    /** @var array|null $urlParams */
+    /** @var array|null */
     public ?array $urlParams = [];
 
-    /** @var string $method */
+    /** @var string */
     public string $method = 'GET';
 
-    /** @var array|null $authorization */
+    /** @var array|null */
     public ?array $authorization;
 
-    /** @var array $headers */
+    /** @var array */
     public array $headers = [];
 
-    /** @var array|null $body */
+    /** @var array|null */
     public ?array $body;
 
-    /** @var array|null $configuration */
+    /** @var array|null */
     public ?array $configuration;
 
     /**
-     * @param string     $url
-     * @param array|null $urlParams
-     * @param string     $method
-     * @param array|null $authorization
-     * @param array      $headers
-     * @param array|null $body
-     * @param array|null $configuration
+     * @param  string  $url
+     * @param  array|null  $urlParams
+     * @param  string  $method
+     * @param  array|null  $authorization
+     * @param  array  $headers
+     * @param  array|null  $body
+     * @param  array|null  $configuration
      */
     public function __construct(string $url,
                                 ?array $urlParams,
                                 string $method,
                                 ?array $authorization,
-                                array  $headers,
+                                array $headers,
                                 ?array $body,
                                 ?array $configuration)
     {

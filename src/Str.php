@@ -7,9 +7,9 @@ use RuntimeException;
 class Str
 {
     /**
-     * @param array $params
-     * @param bool $pluralizeArrQueryParams
-     * @param string[] $pluralizeExcept
+     * @param  array  $params
+     * @param  bool  $pluralizeArrQueryParams
+     * @param  string[]  $pluralizeExcept
      * @return string|false
      */
     public static function httpBuildQuery(array $params, $pluralizeArrQueryParams = false, array $pluralizeExcept = [])
@@ -21,7 +21,7 @@ class Str
                 if (empty($values)) {
                     return false;
                 }
-                if ($pluralizeArrQueryParams && !in_array($key, $pluralizeExcept)) {
+                if ($pluralizeArrQueryParams && ! in_array($key, $pluralizeExcept)) {
                     $key .= self::endsWith($key, 's') ? 'es' : 's';
                 }
                 $key .= '[]';
@@ -35,7 +35,7 @@ class Str
                 }
 
                 $query .= "$key=";
-                if (!is_string($value) && !is_integer($value)) {
+                if (! is_string($value) && ! is_int($value)) {
                     throw new RuntimeException('Value should be a string or an integer');
                 }
                 $query .= urlencode($value);
@@ -46,7 +46,7 @@ class Str
     }
 
     /**
-     * @param string $query
+     * @param  string  $query
      * @return array
      */
     public static function parseQuery($query)
@@ -69,15 +69,15 @@ class Str
     }
 
     /**
-     * @param string $haystack
-     * @param string $needle
-     * @return boolean
+     * @param  string  $haystack
+     * @param  string  $needle
+     * @return bool
      */
     public static function endsWith($haystack, $needle)
     {
         $length = strlen($needle);
         if ($length) {
-            return (substr($haystack, -$length) === $needle);
+            return substr($haystack, -$length) === $needle;
         }
 
         return false;

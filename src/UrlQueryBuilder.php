@@ -4,5 +4,4 @@ namespace Inquid\LaravelApiModelDriver;
 
 trait UrlQueryBuilder
 {
-
 }

@@ -12,31 +12,31 @@ namespace Inquid\LaravelApiModelDriver\communicators;
 interface Communicator
 {
     /**
-     * @param CommunicatorRequest $request
+     * @param  CommunicatorRequest  $request
      * @return array
      */
     public function index(CommunicatorRequest $request): array;
 
     /**
-     * @param CommunicatorRequest $request
+     * @param  CommunicatorRequest  $request
      * @return bool
      */
     public function store(CommunicatorRequest $request): bool;
 
     /**
-     * @param CommunicatorRequest $request
+     * @param  CommunicatorRequest  $request
      * @return array
      */
     public function show(CommunicatorRequest $request): array;
 
     /**
-     * @param CommunicatorRequest $request
+     * @param  CommunicatorRequest  $request
      * @return bool
      */
     public function update(CommunicatorRequest $request): bool;
 
     /**
-     * @param CommunicatorRequest $request
+     * @param  CommunicatorRequest  $request
      * @return bool
      */
     public function destroy(CommunicatorRequest $request): bool;

@@ -34,21 +34,21 @@ class Connection extends ConnectionBase
     }
 
     /**
-     * @param string|false $query E.g. /articles?status=published
-     * @param array        $bindings
-     * @param bool         $useReadPdo
+     * @param  string|false  $query E.g. /articles?status=published
+     * @param  array  $bindings
+     * @param  bool  $useReadPdo
      * @return array
      */
     public function select($query, $bindings = [], $useReadPdo = true)
     {
-        if (!$query) {
+        if (! $query) {
             return [];
         }
 
         return $this->run($query, $bindings, function ($query) {
             $maxPerPage = $this->getConfig('default_params')['per_page'];
             $maxUrlLength = $this->getConfig('max_url_length') ?: 4000;
-            $fullUrl = $this->getDatabaseName() . $query;
+            $fullUrl = $this->getDatabaseName().$query;
 
             $communicationRequest = new CommunicatorRequest(
                 $fullUrl,

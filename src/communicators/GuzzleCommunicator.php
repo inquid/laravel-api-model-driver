@@ -12,12 +12,12 @@ use GuzzleHttp\Psr7\Response;
  */
 class GuzzleCommunicator implements Communicator
 {
-    /** @var Client $client */
+    /** @var Client */
     protected Client $client;
 
     public function __construct(string $baseUri)
     {
-        $this->client =  new Client(['base_uri' => $baseUri]);
+        $this->client = new Client(['base_uri' => $baseUri]);
     }
 
     /**

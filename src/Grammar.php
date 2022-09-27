@@ -13,7 +13,7 @@ class Grammar extends GrammarBase
     private $config = [];
 
     /**
-     * @param array $config
+     * @param  array  $config
      * @return Grammar
      */
     public function setConfig(array $config): self
@@ -24,7 +24,7 @@ class Grammar extends GrammarBase
     }
 
     /**
-     * @param Builder $query
+     * @param  Builder  $query
      * @return string|false
      */
     public function compileSelect(Builder $query): string
@@ -64,7 +64,7 @@ class Grammar extends GrammarBase
                             break;
 
                         default:
-                            throw new RuntimeException('Unsupported query where operator ' . $where['operator']);
+                            throw new RuntimeException('Unsupported query where operator '.$where['operator']);
                     }
                     $params[$param] = $this->filterKeyValue($key, $where['value']);
                     break;
@@ -79,15 +79,15 @@ class Grammar extends GrammarBase
                     $params["max_$key"] = $this->filterKeyValue($key, $where['values'][1]);
                     break;
 
-                // Ignore the following where types.
+                    // Ignore the following where types.
                 case 'NotNull':
                     break;
 
                 default:
-                    throw new RuntimeException('Unsupported query where type ' . $where['type']);
+                    throw new RuntimeException('Unsupported query where type '.$where['type']);
             }
         }
-        if (!empty($query->orders)) {
+        if (! empty($query->orders)) {
             if (count($query->orders) > 1) {
                 throw new RuntimeException('API query does not support multiple orders');
             }
@@ -102,17 +102,17 @@ class Grammar extends GrammarBase
         }
         if ($query->limit) {
             if ($query->limit >= $params['per_page']) {
-                throw new RuntimeException('Query limit should be less than ' . $params['per_page']);
+                throw new RuntimeException('Query limit should be less than '.$params['per_page']);
             }
             $params['per_page'] = $query->limit;
         }
 
         $url = "/$query->from";
-        if (!empty($params)) {
+        if (! empty($params)) {
             $url .= '?';
             $queryStr = Str::httpBuildQuery(
                 $params,
-                !empty($this->config['pluralize_array_query_params']),
+                ! empty($this->config['pluralize_array_query_params']),
                 $this->config['pluralize_except'] ?? [],
             );
             if ($queryStr === false) {
@@ -125,8 +125,8 @@ class Grammar extends GrammarBase
     }
 
     /**
-     * @param string $key
-     * @param string|array|integer|null $value
+     * @param  string  $key
+     * @param  string|array|int|null  $value
      * @return mixed
      */
     private function filterKeyValue($key, $value)
@@ -140,11 +140,12 @@ class Grammar extends GrammarBase
                 if (strlen($value) === 19) {
                     $value = (new DateTime($value, $appDtZone))->setTimezone($connDtZone)->format('Y-m-d H:i:s');
                 }
-            } else if (is_array($value)) {
+            } elseif (is_array($value)) {
                 $value = array_map(function ($value) use ($connDtZone, $appDtZone) {
                     if (is_string($value) && strlen($value) === 19) {
                         $value = (new DateTime($value, $appDtZone))->setTimezone($connDtZone)->format('Y-m-d H:i:s');
                     }
+
                     return $value;
                 }, $value);
             }
